@@ -2,4 +2,7 @@
 Docker image for Dave Hein's CLI Authenticator
 
 
-``` git submodule update --init --recursive
+``
+git submodule update --init --recursive
+``
+
