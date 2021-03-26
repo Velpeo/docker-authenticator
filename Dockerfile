@@ -9,16 +9,14 @@ COPY requirements.txt .
 
 # update packages prior to installing requirements
 RUN pip install --upgrade pip
-RUN apt-get update
-RUN apt-get install libffi-dev build-essential libssl-dev libffi-dev python-dev -y
+# RUN apt-get update
+# RUN apt-get install libffi-dev build-essential libssl-dev libffi-dev python-dev -y
 
 # install dependencies
 RUN pip install -r requirements.txt
 
 # copy the content of the local src directory to the working directory
-COPY src/ ./src
-
-COPY dev/ ./dev
+COPY authenticator/ .
 
 # command to run on container start
 CMD [ "dev/venv/make-venv.sh" ]
