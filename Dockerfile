@@ -8,9 +8,8 @@ WORKDIR /auth
 COPY requirements.txt .
 
 # update packages prior to installing requirements
-RUN apk --update add build-base libffi-dev openssl-dev python-dev py-pip
-
-RUN apk add --no-cache libressl-dev musl-dev libffi-dev
+RUN pip install --upgrade pip
+RUN sudo apt-get install libffi-dev
 
 # install dependencies
 RUN pip install -r requirements.txt
