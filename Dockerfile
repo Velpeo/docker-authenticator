@@ -18,9 +18,12 @@ RUN pip install -r requirements.txt
 # copy the content of the local src directory to the working directory
 COPY authenticator/ .
 
+# command to run to build and test authenticator
+RUN dev/venv/make-venv.sh
+RUN . dev/venv/activate-project.src
+RUN dev/venv/provision-venv.sh
+RUN dev/lint.sh
+RUN dev/runtests.sh
+
 # command to run on container start
-CMD [ "dev/venv/make-venv.sh" ]
-CMD [ ". dev/venv/activate-project.src" ]
-CMD [ "dev/venv/provision-venv.sh" ]
-CMD [ "dev/lint.sh" ]
-CMD [ "dev/runtests.sh" ]
+CMD [ "authenticator", "generate" ]
