@@ -9,7 +9,8 @@ COPY requirements.txt .
 
 # update packages prior to installing requirements
 RUN pip install --upgrade pip
-RUN sudo apt-get install libffi-dev
+RUN apt-get update
+RUN apt-get install libffi-dev build-essential libssl-dev libffi-dev python-dev -y
 
 # install dependencies
 RUN pip install -r requirements.txt
